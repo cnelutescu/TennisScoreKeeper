@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Layout for the basketball score counter. -->
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/ImageViewU"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:alpha="1"
+        android:scaleType="fitXY"
+        android:src="@drawable/ball2" />
+
+    <LinearLayout
+        android:id="@+id/sets"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/regular_12"
+            android:gravity="center"
+            android:textColor="#FFFFFF"
+            android:text="Sets" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="@dimen/regular_12"
+            android:textColor="#FFFFFF"
+            android:text="1" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="@dimen/regular_12"
+            android:textColor="#FFFFFF"
+            android:text="2" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="@dimen/regular_12"
+            android:textColor="#FFFFFF"
+            android:text="3" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="@dimen/regular_12"
+            android:textColor="#FFFFFF"
+            android:text="4" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="@dimen/regular_12"
+            android:textColor="#FFFFFF"
+            android:text="5" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/setsPlayerA"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sets"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/setsPlayerA_0"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:text="Player A"
+            android:textColor="@color/colorPlayerA"
+            android:textSize="@dimen/regular_24" />
+        <TextView
+            android:id="@+id/playerA_set1"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="@dimen/regular_24"
+            android:textColor="@color/colorPlayerA"
+            android:text="6" />
+        <TextView
+            android:id="@+id/playerA_set2"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="@dimen/regular_24"
+            android:textColor="@color/colorPlayerA"
+            android:text="3" />
+        <TextView
+            android:id="@+id/playerA_set3"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="@dimen/regular_24"
+            android:textColor="@color/colorPlayerA"
+            android:text="1" />
+        <TextView
+            android:id="@+id/playerA_set4"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="@dimen/regular_24"
+            android:textColor="@color/colorPlayerA"
+            android:text="7" />
+        <TextView
+            android:id="@+id/playerA_set5"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="@dimen/regular_24"
+            android:textColor="@color/colorPlayerA"
+            android:text="6" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/setsPlayerB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/setsPlayerA"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/setsPlayerB_0"
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/regular_24"
+            android:gravity="center"
+            android:textColor="@color/colorPlayerB"
+            android:text="Player B" />
+        <TextView
+            android:id="@+id/playerB_set1"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="@dimen/regular_24"
+            android:textColor="@color/colorPlayerB"
+            android:text="4" />
+        <TextView
+            android:id="@+id/playerB_set2"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="@dimen/regular_24"
+            android:textColor="@color/colorPlayerB"
+            android:text="6" />
+        <TextView
+            android:id="@+id/playerB_set3"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="@dimen/regular_24"
+            android:textColor="@color/colorPlayerB"
+            android:text="6" />
+        <TextView
+            android:id="@+id/playerB_set4"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="@dimen/regular_24"
+            android:textColor="@color/colorPlayerB"
+            android:text="6" />
+        <TextView
+            android:id="@+id/playerB_set5"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="@dimen/regular_24"
+            android:textColor="@color/colorPlayerB"
+            android:text="3" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/setsPlayerB"
+        android:background="@android:color/darker_gray"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/setsPlayerB"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/player_a"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="@dimen/regular_34"
+                android:textColor="@color/colorPlayerA"
+                android:fontFamily="sans-serif-medium"
+                android:text="Player A" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/player_a_score"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:gravity="center"
+                    android:text="30"
+                    android:textColor="@color/colorPlayerA"
+                    android:textSize="@dimen/regular_80"
+                    android:visibility="visible" />
+                <ImageView
+                    android:id="@+id/team_a_serve"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="15dp"
+                    android:layout_weight="1"
+                    android:alpha="1"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ball5"
+                    android:visibility="visible" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/player_a_ace"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.5"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:textSize="@dimen/regular_24"
+                    android:gravity="center"
+                    android:textColor="@color/colorPlayerA"
+                    android:text="20" />
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="4dp"
+                    android:onClick="setAcePlayerA"
+                    android:text="Ace" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/player_a_fault"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.5"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:textSize="@dimen/regular_24"
+                    android:gravity="center"
+                    android:textColor="@color/colorPlayerA"
+                    android:text="20" />
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="4dp"
+                    android:onClick="setFaultPlayerA"
+                    android:text="Fault" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/player_a_double"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.5"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:textSize="@dimen/regular_24"
+                    android:gravity="center"
+                    android:textColor="@color/colorPlayerA"
+                    android:text="20" />
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="4dp"
+                    android:onClick="setDoublePlayerA"
+                    android:text="Double F." />
+            </LinearLayout>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginLeft="15dp"
+                android:onClick="setPointPlayerA"
+                android:text="Point A" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@android:color/darker_gray"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            tools:context=".MainActivity">
+            <TextView
+                android:id="@+id/player_b"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="@dimen/regular_34"
+                android:textColor="@color/colorPlayerB"
+                android:fontFamily="sans-serif-medium"
+                android:text="Player B" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/player_b_score"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:gravity="center"
+                    android:text="30"
+                    android:textColor="@color/colorPlayerB"
+                    android:textSize="@dimen/regular_80"
+                    android:visibility="visible" />
+                <ImageView
+                    android:id="@+id/team_b_serve"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="15dp"
+                    android:layout_weight="1"
+                    android:alpha="1"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ball5"
+                    android:visibility="invisible" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginLeft="15dp"
+                    android:onClick="setAcePlayerB"
+                    android:text="Ace" />
+                <TextView
+                    android:id="@+id/player_b_ace"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.5"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:textSize="@dimen/regular_24"
+                    android:gravity="center"
+                    android:textColor="@color/colorPlayerB"
+                    android:text="20" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginLeft="15dp"
+                    android:onClick="setFaultPlayerB"
+                    android:text="Fault" />
+                <TextView
+                    android:id="@+id/player_b_fault"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.5"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:textSize="@dimen/regular_24"
+                    android:gravity="center"
+                    android:textColor="@color/colorPlayerB"
+                    android:text="20" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginLeft="15dp"
+                    android:onClick="setDoublePlayerB"
+                    android:text="Double F." />
+                <TextView
+                    android:id="@+id/player_b_double"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.5"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:textSize="@dimen/regular_24"
+                    android:gravity="center"
+                    android:textColor="@color/colorPlayerB"
+                    android:text="20" />
+            </LinearLayout>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="50dp"
+                android:onClick="setPointPlayerB"
+                android:text="Point B" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="12dp"
+        android:onClick="resetScore"
+        android:text="Reset" />
+
+</RelativeLayout>
