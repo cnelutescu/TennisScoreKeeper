@@ -25,6 +25,7 @@
         android:id="@+id/sets"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal">
         <TextView
             android:layout_width="0dp"
@@ -143,6 +144,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/setsPlayerA"
+        android:layout_marginBottom="6dp"
         android:orientation="horizontal">
         <TextView
             android:id="@+id/setsPlayerB_0"
@@ -201,6 +203,7 @@
     </LinearLayout>
 
     <View
+        android:id="@+id/horizontal_line"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@id/setsPlayerB"
@@ -209,7 +212,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/setsPlayerB"
+        android:layout_below="@id/horizontal_line"
         android:orientation="horizontal">
         <LinearLayout
             android:layout_width="0dp"
@@ -460,6 +463,7 @@
                 android:onClick="setPointPlayerB"
                 android:text="Point B" />
         </LinearLayout>
+
     </LinearLayout>
 
     <Button
