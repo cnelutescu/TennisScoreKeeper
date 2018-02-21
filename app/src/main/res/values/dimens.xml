@@ -13,4 +13,8 @@
     <dimen name="regular_56">56sp</dimen>
     <dimen name="regular_80">80sp</dimen>
     <dimen name="light_112">112sp</dimen>
+    <dimen name="margin_bottom">8dp</dimen>
+    <dimen name="margin_top">10dp</dimen>
+    <dimen name="margin_between">4dp</dimen>
+    <dimen name="margin_external">15dp</dimen>
 </resources>

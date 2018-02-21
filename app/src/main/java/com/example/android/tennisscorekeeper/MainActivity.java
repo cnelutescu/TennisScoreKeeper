@@ -1,14 +1,15 @@
 package com.example.android.tennisscorekeeper;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-
     int serve = 0;
+    int setLim = 2;        // 2 = 2/3,  3 = 3/5
     int setsWinPlayerA = 0;
     int setsWinPlayerB = 0;
     int gameOver = 0;
@@ -37,46 +38,46 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         // display all zero:
-        TextView scoreView = (TextView) findViewById(R.id.player_a_score);
+        TextView scoreView = findViewById(R.id.player_a_score);
         scoreView.setText(String.valueOf(scorePlayerA));
-        scoreView = (TextView) findViewById(R.id.player_b_score);
+        scoreView = findViewById(R.id.player_b_score);
         scoreView.setText(String.valueOf(scorePlayerB));
-        scoreView = (TextView) findViewById(R.id.player_a_ace);
+        scoreView = findViewById(R.id.player_a_ace);
         scoreView.setText(String.valueOf(acePlayerA));
-        scoreView = (TextView) findViewById(R.id.player_b_ace);
+        scoreView = findViewById(R.id.player_b_ace);
         scoreView.setText(String.valueOf(acePlayerB));
-        scoreView = (TextView) findViewById(R.id.player_a_fault);
+        scoreView = findViewById(R.id.player_a_fault);
         scoreView.setText(String.valueOf(faultPlayerA));
-        scoreView = (TextView) findViewById(R.id.player_b_fault);
+        scoreView = findViewById(R.id.player_b_fault);
         scoreView.setText(String.valueOf(faultPlayerB));
-        scoreView = (TextView) findViewById(R.id.player_a_double);
+        scoreView = findViewById(R.id.player_a_double);
         scoreView.setText(String.valueOf(doublePlayerA));
-        scoreView = (TextView) findViewById(R.id.player_b_double);
+        scoreView = findViewById(R.id.player_b_double);
         scoreView.setText(String.valueOf(doublePlayerB));
-        scoreView = (TextView) findViewById(R.id.playerA_set1);
+        scoreView = findViewById(R.id.playerA_set1);
         scoreView.setText(String.valueOf(set1PlayerA));
-        scoreView = (TextView) findViewById(R.id.playerA_set2);
+        scoreView = findViewById(R.id.playerA_set2);
         scoreView.setText(String.valueOf(set2PlayerA));
-        scoreView = (TextView) findViewById(R.id.playerA_set3);
+        scoreView = findViewById(R.id.playerA_set3);
         scoreView.setText(String.valueOf(set3PlayerA));
-        scoreView = (TextView) findViewById(R.id.playerA_set4);
+        scoreView = findViewById(R.id.playerA_set4);
         scoreView.setText(String.valueOf(set4PlayerA));
-        scoreView = (TextView) findViewById(R.id.playerA_set5);
+        scoreView = findViewById(R.id.playerA_set5);
         scoreView.setText(String.valueOf(set5PlayerA));
-        scoreView = (TextView) findViewById(R.id.playerB_set1);
+        scoreView = findViewById(R.id.playerB_set1);
         scoreView.setText(String.valueOf(set1PlayerB));
-        scoreView = (TextView) findViewById(R.id.playerB_set2);
+        scoreView = findViewById(R.id.playerB_set2);
         scoreView.setText(String.valueOf(set2PlayerB));
-        scoreView = (TextView) findViewById(R.id.playerB_set3);
+        scoreView = findViewById(R.id.playerB_set3);
         scoreView.setText(String.valueOf(set3PlayerB));
-        scoreView = (TextView) findViewById(R.id.playerB_set4);
+        scoreView = findViewById(R.id.playerB_set4);
         scoreView.setText(String.valueOf(set4PlayerB));
-        scoreView = (TextView) findViewById(R.id.playerB_set5);
+        scoreView = findViewById(R.id.playerB_set5);
         scoreView.setText(String.valueOf(set5PlayerB));
         //------ Player A serve
-        ImageView ima = (ImageView) findViewById(R.id.team_a_serve);
+        ImageView ima = findViewById(R.id.team_a_serve);
         ima.setVisibility(View.VISIBLE);
-        ImageView imb = (ImageView) findViewById(R.id.team_b_serve);
+        ImageView imb = findViewById(R.id.team_b_serve);
         imb.setVisibility(View.INVISIBLE);
     }
 
@@ -84,9 +85,15 @@ public class MainActivity extends AppCompatActivity {
      * Increase the score for Player A by 1 point.
      */
     public void setPointPlayerA(View v) {
+        RadioButton radioButton = findViewById(R.id.yes_radio_button);     // get 2/3
+        if (radioButton.isChecked()) {
+            setLim = 2;     // match 2/3
+        } else {
+            setLim = 3;     // match 3/5
+        }
         if (gameOver == 0) {
-            TextView scoreViewA = (TextView) findViewById(R.id.player_a_score);
-            TextView scoreViewB = (TextView) findViewById(R.id.player_b_score);
+            TextView scoreViewA = findViewById(R.id.player_a_score);
+            TextView scoreViewB = findViewById(R.id.player_b_score);
             switch (scorePlayerA) {
                 case 0:
                     scorePlayerA = 15;
@@ -103,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
                 case 40:
                     if (scorePlayerB == 40) {           // Advantage
                         scorePlayerA = 50;
-                        scoreViewA.setText("Ad");
+                        scoreViewA.setText(R.string.advantage);
                         break;
                     } else if (scorePlayerB == 50) {    //40 love
                         scorePlayerB = 40;
@@ -130,6 +137,9 @@ public class MainActivity extends AppCompatActivity {
                             if (set2PlayerA > 5 && ((set2PlayerA - set2PlayerB) >= 2)) {
                                 nrSet = 3;
                                 setsWinPlayerA = setsWinPlayerA + 1;
+                                if (setsWinPlayerA == setLim) {
+                                    displayGameOver();  // Player A win the match!
+                                }
                             }
                             break;
                         case 3:
@@ -137,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
                             if (set3PlayerA > 5 && ((set3PlayerA - set3PlayerB) >= 2)) {
                                 nrSet = 4;
                                 setsWinPlayerA = setsWinPlayerA + 1;
-                                if (setsWinPlayerA == 3) {
+                                if (setsWinPlayerA == setLim) {
                                     displayGameOver();  // Player A win the match!
                                 }
                             }
@@ -147,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
                             if (set4PlayerA > 5 && ((set4PlayerA - set4PlayerB) >= 2)) {
                                 nrSet = 5;
                                 setsWinPlayerA = setsWinPlayerA + 1;
-                                if (setsWinPlayerA == 3) {
+                                if (setsWinPlayerA == setLim) {
                                     displayGameOver();  // Player A win the match!
                                 }
                             }
@@ -172,9 +182,15 @@ public class MainActivity extends AppCompatActivity {
      * Increase the score for Player B by 1 point.
      */
     public void setPointPlayerB(View v) {
+        RadioButton radioButton = findViewById(R.id.yes_radio_button);     // get 2/3
+        if (radioButton.isChecked()) {
+            setLim = 2;     // match 2/3
+        } else {
+            setLim = 3;     // match 3/5
+        }
         if (gameOver == 0) {
-            TextView scoreViewA = (TextView) findViewById(R.id.player_a_score);
-            TextView scoreViewB = (TextView) findViewById(R.id.player_b_score);
+            TextView scoreViewA = findViewById(R.id.player_a_score);
+            TextView scoreViewB = findViewById(R.id.player_b_score);
             switch (scorePlayerB) {
                 case 0:
                     scorePlayerB = 15;
@@ -191,7 +207,7 @@ public class MainActivity extends AppCompatActivity {
                 case 40:
                     if (scorePlayerA == 40) {           // Advantage
                         scorePlayerB = 50;
-                        scoreViewB.setText("Ad");
+                        scoreViewB.setText(R.string.advantage);
                         break;
                     } else if (scorePlayerA == 50) {    //40 love
                         scorePlayerA = 40;
@@ -218,6 +234,9 @@ public class MainActivity extends AppCompatActivity {
                             if (set2PlayerB > 5 && ((set2PlayerB - set2PlayerA) >= 2)) {
                                 nrSet = 3;
                                 setsWinPlayerB = setsWinPlayerB + 1;
+                                if (setsWinPlayerB == setLim) {
+                                    displayGameOver();    // Player B win the match!
+                                }
                             }
                             break;
                         case 3:
@@ -225,7 +244,7 @@ public class MainActivity extends AppCompatActivity {
                             if (set3PlayerB > 5 && ((set3PlayerB - set3PlayerA) >= 2)) {
                                 nrSet = 4;
                                 setsWinPlayerB = setsWinPlayerB + 1;
-                                if (setsWinPlayerB == 3) {
+                                if (setsWinPlayerB == setLim) {
                                     displayGameOver();    // Player B win the match!
                                 }
                             }
@@ -235,7 +254,7 @@ public class MainActivity extends AppCompatActivity {
                             if (set4PlayerB > 5 && ((set4PlayerB - set4PlayerA) >= 2)) {
                                 nrSet = 5;
                                 setsWinPlayerB = setsWinPlayerB + 1;
-                                if (setsWinPlayerB == 3) {
+                                if (setsWinPlayerB == setLim) {
                                     displayGameOver();      // Player B win the match!
                                 }
                             }
@@ -262,7 +281,7 @@ public class MainActivity extends AppCompatActivity {
     public void setAcePlayerA(View v) {
         if (gameOver == 0) {
             acePlayerA = acePlayerA + 1;
-            TextView scoreView = (TextView) findViewById(R.id.player_a_ace);
+            TextView scoreView = findViewById(R.id.player_a_ace);
             scoreView.setText(String.valueOf(acePlayerA));
         }
     }
@@ -273,7 +292,7 @@ public class MainActivity extends AppCompatActivity {
     public void setAcePlayerB(View v) {
         if (gameOver == 0) {
             acePlayerB = acePlayerB + 1;
-            TextView scoreView = (TextView) findViewById(R.id.player_b_ace);
+            TextView scoreView = findViewById(R.id.player_b_ace);
             scoreView.setText(String.valueOf(acePlayerB));
         }
     }
@@ -284,7 +303,7 @@ public class MainActivity extends AppCompatActivity {
     public void setFaultPlayerA(View v) {
         if (gameOver == 0) {
             faultPlayerA = faultPlayerA + 1;
-            TextView scoreView = (TextView) findViewById(R.id.player_a_fault);
+            TextView scoreView = findViewById(R.id.player_a_fault);
             scoreView.setText(String.valueOf(faultPlayerA));
         }
     }
@@ -295,7 +314,7 @@ public class MainActivity extends AppCompatActivity {
     public void setFaultPlayerB(View v) {
         if (gameOver == 0) {
             faultPlayerB = faultPlayerB + 1;
-            TextView scoreView = (TextView) findViewById(R.id.player_b_fault);
+            TextView scoreView = findViewById(R.id.player_b_fault);
             scoreView.setText(String.valueOf(faultPlayerB));
         }
     }
@@ -306,7 +325,7 @@ public class MainActivity extends AppCompatActivity {
     public void setDoublePlayerA(View v) {
         if (gameOver == 0) {
             doublePlayerA = doublePlayerA + 1;
-            TextView scoreView = (TextView) findViewById(R.id.player_a_double);
+            TextView scoreView = findViewById(R.id.player_a_double);
             scoreView.setText(String.valueOf(doublePlayerA));
         }
     }
@@ -317,7 +336,7 @@ public class MainActivity extends AppCompatActivity {
     public void setDoublePlayerB(View v) {
         if (gameOver == 0) {
             doublePlayerB = doublePlayerB + 1;
-            TextView scoreView = (TextView) findViewById(R.id.player_b_double);
+            TextView scoreView = findViewById(R.id.player_b_double);
             scoreView.setText(String.valueOf(doublePlayerB));
         }
     }
@@ -348,52 +367,51 @@ public class MainActivity extends AppCompatActivity {
         set3PlayerB = 0;
         set4PlayerB = 0;
         set5PlayerB = 0;
-
-        TextView scoreView = (TextView) findViewById(R.id.player_a_score);
+        TextView scoreView = findViewById(R.id.player_a_score);
         scoreView.setText(String.valueOf(scorePlayerA));
-        scoreView = (TextView) findViewById(R.id.player_b_score);
+        scoreView = findViewById(R.id.player_b_score);
         scoreView.setText(String.valueOf(scorePlayerB));
-        scoreView = (TextView) findViewById(R.id.player_a_ace);
+        scoreView = findViewById(R.id.player_a_ace);
         scoreView.setText(String.valueOf(acePlayerA));
-        scoreView = (TextView) findViewById(R.id.player_b_ace);
+        scoreView = findViewById(R.id.player_b_ace);
         scoreView.setText(String.valueOf(acePlayerB));
-        scoreView = (TextView) findViewById(R.id.player_a_fault);
+        scoreView = findViewById(R.id.player_a_fault);
         scoreView.setText(String.valueOf(faultPlayerA));
-        scoreView = (TextView) findViewById(R.id.player_b_fault);
+        scoreView = findViewById(R.id.player_b_fault);
         scoreView.setText(String.valueOf(faultPlayerB));
-        scoreView = (TextView) findViewById(R.id.player_a_double);
+        scoreView = findViewById(R.id.player_a_double);
         scoreView.setText(String.valueOf(doublePlayerA));
-        scoreView = (TextView) findViewById(R.id.player_b_double);
+        scoreView = findViewById(R.id.player_b_double);
         scoreView.setText(String.valueOf(doublePlayerB));
-        scoreView = (TextView) findViewById(R.id.playerA_set1);
+        scoreView = findViewById(R.id.playerA_set1);
         scoreView.setText(String.valueOf(set1PlayerA));
-        scoreView = (TextView) findViewById(R.id.playerA_set2);
+        scoreView = findViewById(R.id.playerA_set2);
         scoreView.setText(String.valueOf(set2PlayerA));
-        scoreView = (TextView) findViewById(R.id.playerA_set3);
+        scoreView = findViewById(R.id.playerA_set3);
         scoreView.setText(String.valueOf(set3PlayerA));
-        scoreView = (TextView) findViewById(R.id.playerA_set4);
+        scoreView = findViewById(R.id.playerA_set4);
         scoreView.setText(String.valueOf(set4PlayerA));
-        scoreView = (TextView) findViewById(R.id.playerA_set5);
+        scoreView = findViewById(R.id.playerA_set5);
         scoreView.setText(String.valueOf(set5PlayerA));
-        scoreView = (TextView) findViewById(R.id.playerB_set1);
+        scoreView = findViewById(R.id.playerB_set1);
         scoreView.setText(String.valueOf(set1PlayerB));
-        scoreView = (TextView) findViewById(R.id.playerB_set2);
+        scoreView = findViewById(R.id.playerB_set2);
         scoreView.setText(String.valueOf(set2PlayerB));
-        scoreView = (TextView) findViewById(R.id.playerB_set3);
+        scoreView = findViewById(R.id.playerB_set3);
         scoreView.setText(String.valueOf(set3PlayerB));
-        scoreView = (TextView) findViewById(R.id.playerB_set4);
+        scoreView = findViewById(R.id.playerB_set4);
         scoreView.setText(String.valueOf(set4PlayerB));
-        scoreView = (TextView) findViewById(R.id.playerB_set5);
+        scoreView = findViewById(R.id.playerB_set5);
         scoreView.setText(String.valueOf(set5PlayerB));
         //------ Display Player A and Player B
-        TextView playerAView = (TextView) findViewById(R.id.player_a);
-        playerAView.setText("Player A");
-        TextView playerBView = (TextView) findViewById(R.id.player_b);
-        playerBView.setText("Player B");
+        TextView playerAView = findViewById(R.id.player_a);
+        playerAView.setText(R.string.player_a);
+        TextView playerBView = findViewById(R.id.player_b);
+        playerBView.setText(R.string.player_b);
         //------ Player A serve
-        ImageView ima = (ImageView) findViewById(R.id.team_a_serve);
+        ImageView ima = findViewById(R.id.team_a_serve);
         ima.setVisibility(View.VISIBLE);
-        ImageView imb = (ImageView) findViewById(R.id.team_b_serve);
+        ImageView imb = findViewById(R.id.team_b_serve);
         imb.setVisibility(View.INVISIBLE);
     }
 
@@ -401,25 +419,25 @@ public class MainActivity extends AppCompatActivity {
      * Display  sets for Player A and B
      */
     public void displaySets() {
-        TextView scoreView = (TextView) findViewById(R.id.playerA_set1);
+        TextView scoreView = findViewById(R.id.playerA_set1);
         scoreView.setText(String.valueOf(set1PlayerA));
-        scoreView = (TextView) findViewById(R.id.playerA_set2);
+        scoreView = findViewById(R.id.playerA_set2);
         scoreView.setText(String.valueOf(set2PlayerA));
-        scoreView = (TextView) findViewById(R.id.playerA_set3);
+        scoreView = findViewById(R.id.playerA_set3);
         scoreView.setText(String.valueOf(set3PlayerA));
-        scoreView = (TextView) findViewById(R.id.playerA_set4);
+        scoreView = findViewById(R.id.playerA_set4);
         scoreView.setText(String.valueOf(set4PlayerA));
-        scoreView = (TextView) findViewById(R.id.playerA_set5);
+        scoreView = findViewById(R.id.playerA_set5);
         scoreView.setText(String.valueOf(set5PlayerA));
-        scoreView = (TextView) findViewById(R.id.playerB_set1);
+        scoreView = findViewById(R.id.playerB_set1);
         scoreView.setText(String.valueOf(set1PlayerB));
-        scoreView = (TextView) findViewById(R.id.playerB_set2);
+        scoreView = findViewById(R.id.playerB_set2);
         scoreView.setText(String.valueOf(set2PlayerB));
-        scoreView = (TextView) findViewById(R.id.playerB_set3);
+        scoreView = findViewById(R.id.playerB_set3);
         scoreView.setText(String.valueOf(set3PlayerB));
-        scoreView = (TextView) findViewById(R.id.playerB_set4);
+        scoreView = findViewById(R.id.playerB_set4);
         scoreView.setText(String.valueOf(set4PlayerB));
-        scoreView = (TextView) findViewById(R.id.playerB_set5);
+        scoreView = findViewById(R.id.playerB_set5);
         scoreView.setText(String.valueOf(set5PlayerB));
     }
 
@@ -430,16 +448,16 @@ public class MainActivity extends AppCompatActivity {
         if (serve == 0) {
             serve = 1;
             //------ Player B serve
-            ImageView ima = (ImageView) findViewById(R.id.team_a_serve);
+            ImageView ima = findViewById(R.id.team_a_serve);
             ima.setVisibility(View.INVISIBLE);
-            ImageView imb = (ImageView) findViewById(R.id.team_b_serve);
+            ImageView imb = findViewById(R.id.team_b_serve);
             imb.setVisibility(View.VISIBLE);
         } else {
             serve = 0;
             //------ Player A serve
-            ImageView ima = (ImageView) findViewById(R.id.team_a_serve);
+            ImageView ima = findViewById(R.id.team_a_serve);
             ima.setVisibility(View.VISIBLE);
-            ImageView imb = (ImageView) findViewById(R.id.team_b_serve);
+            ImageView imb = findViewById(R.id.team_b_serve);
             imb.setVisibility(View.INVISIBLE);
         }
     }
@@ -449,13 +467,13 @@ public class MainActivity extends AppCompatActivity {
      */
     public void displayGameOver() {
         gameOver = 1;
-        TextView playerAView = (TextView) findViewById(R.id.player_a);
-        playerAView.setText("Game");
-        TextView playerBView = (TextView) findViewById(R.id.player_b);
-        playerBView.setText("Over");
-        TextView scoreViewA = (TextView) findViewById(R.id.player_a_score);
+        TextView playerAView = findViewById(R.id.player_a);
+        playerAView.setText(R.string.game);
+        TextView playerBView = findViewById(R.id.player_b);
+        playerBView.setText(R.string.over);
+        TextView scoreViewA = findViewById(R.id.player_a_score);
         scoreViewA.setText(String.valueOf(setsWinPlayerA));
-        TextView scoreViewB = (TextView) findViewById(R.id.player_b_score);
+        TextView scoreViewB = findViewById(R.id.player_b_score);
         scoreViewB.setText(String.valueOf(setsWinPlayerB));
     }
 

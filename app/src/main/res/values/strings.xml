@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">Tennis Score Keeper</string>
+    <string name="sets">Sets</string>
+    <string name="_0">0</string>
+    <string name="_1">1</string>
+    <string name="_2">2</string>
+    <string name="_3">3</string>
+    <string name="_4">4</string>
+    <string name="_5">5</string>
+    <string name="player_a">Player A</string>
+    <string name="player_b">Player B</string>
+    <string name="point_a">Point A</string>
+    <string name="point_b">Point B</string>
+    <string name="ace">Ace</string>
+    <string name="fault">Fault</string>
+    <string name="double_f">Double F.</string>
+    <string name="reset">Reset</string>
+    <string name="advantage">Ad</string>
+    <string name="game">Game</string>
+    <string name="over">Over</string>
+    <string name="best_of_three_2_3">Best of three</string>
+    <string name="best_of_five_3_5">Best of five</string>
 </resources>
